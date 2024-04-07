@@ -1,14 +1,14 @@
-Junior Trailblazers Community 
+# Junior Trailblazers Community 
 
 Junior Trailblazers is a web application designed to connect college students worldwide to engage and provide them with information about various events happening in different colleges. It aims to foster personal and professional growth by offering opportunities for students to engage, learn, and connect with like-minded individuals.
 
-Features:
+## Features:
 
 End-Users: Students can explore and learn about upcoming events.
 Post-Incharge: Authorized users can post event details, including title, description, category, and event posters.
 Administrative Privileges: Users with administrative privileges control the overall workflow of JTC.
 
-Technologies Used:
+## Technologies Used:
 
 
 Front-End: HTML, CSS, JavaScript, Bootstrap
