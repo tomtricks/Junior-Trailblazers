@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<style>
+    .card {
+        min-height: 300px;
+        min-width: 300px;
+        margin-right: 5px;
+    }
+   
+
+    .rowscroll{
+        background-color: rgb(253, 247, 247);
+      
+      
+        }
+    
+
+    .nav-item img{
+        height: 20px;
+        width: 20px;;
+      }
+</style>
+
+<!-- <a href="{% url 'category-list' %}" class="text-dark btn btn-white"
+style="text-decoration: none;
+color: black;">
+<svg xmlns="http://www.w3.org/2000/svg"  id="navLeft" width="16" height="16" fill="currentColor" 
+        class="navleft float-left mt-3 bi bi-arrow-left-circle navLeft" viewBox="0 0 16 16">
+        <a xlink:href="{% url 'home' %}" class="">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+</a> -->
+
+{% if category_post %}
+<h1>{{ cats }}</h1>
+<!-- operating_list is for querying all the sets in listview -->
+<!-- <ul> -->
+
+  <!-- design  -->
+  <div class="container-fluid">
+    <div class="container-fluid py-2 px-2">
+        <div class="d-flex flex-wrap justify-content-sm-between mx-2 my-2 rowscroll" id="rowscroll">
+<!-- try around and between -->
+
+            {% for post in category_post %}
+            <!-- <li> -->
+
+                <!-- For checking the furture and past by if  -->
+                {#% if post.Is_Past|lower == "furture" %#}
+                
+                <div class="card col-sm-3 shadow mx-2 my-2">
+                {% if post.header_image %}
+            <!-- Image From folder -->
+            <img class="card-img-top img-responsive img-fluid  rounded"  src=" {{ post.header_image.url }}" height="50px" alt="Card-image" >  
+            <!-- <br> -->
+            
+                {% else %}
+            <img class="img-fluid  rounded"  src="{% static 'tryblog/images/profile-picture.png' %}" height="50px" alt="Card-image" >  
+            <!-- <br> -->
+                {% endif %}
+
+
+                <div class="card-body">
+                    <p class="font-weight-bold ">
+                        <a href="{% url 'article-detail' post.pk %}"> {{post.title}}</a>
+                    </p>
+
+
+
+
+    <!-- <a href="{#% url 'article-detail' post.pk %#}"> {{post.title}}</a> -->
+
+        <!-- -{{ post.category }} -->
+
+        <p class="text-muted">
+
+            {{post.college_name}}
+                            -{{post.author.first_name}} {{ post.author.last_name}} -
+                            {{ post.publication_date }}--{{post.event_date}}   
+        </p>
+
+        <!-- <br> -->
+                            <h6> {{post.Days_till}} Left</h6>
+                            <!-- <h6>{{post.Is_Past}}</h6> -->
+
+
+
+        <!-- -{{post.author.first_name}} {{ post.author.last_name}} -
+        {{ post.publication_date }}     
+        <small> -->
+
+            <a href="{% url 'article-detail' post.pk %}" class="stretched-link"></a>
+
+
+            {#% if user.is_authenticated %#}
+
+            <!-- -<a href="{#% url 'update_post' post.pk %#}">(Edit)</a> -->
+            
+            <!-- <a href="{#% url 'delete_post' post.pk %#}">(Delete)</a> -->
+        
+            {#% endif %#}
+
+            
+
+        <!-- </small> 
+    <br>
+    {{post.body | slice:":200"|safe}} -->
+<!-- </li> -->
+    <br>
+        </div>
+    </div>
+    <!-- endif for checking the post for furture and past  -->
+    {#% endif %#}    
+    {% endfor %}
+
+   
+   </div> 
+</div>
+
+<!-- design end -->
+
+    <!-- {{ cats }} -->
+    
+<!-- </ul> -->
+{% else %}
+
+<div class="container h-100 w-100">
+    <div class="row h-100 pt-5  justify-content-center align-items-center">
+        <div class="col-md-6">
+        <h2 class="  shadow-lg text-center pt-2 pb-2">Currently no post in this category</h2>
+    </div>
+    </div>
+    </div>
+    <!-- <div class=" col-md-4 box shadow align-items-center text-center ">
+        <h2 class="">This page does not exists</h2>
+    </div> -->
+</div>
+{% endif %}
+
+{% endblock %}

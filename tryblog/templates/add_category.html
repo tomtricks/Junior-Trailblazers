@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a new Category{% endblock %}
+{% block content %}
+<style>
+    body{
+        background: rgb(221, 224, 236);
+    }
+</style>
+{% if user.is_authenticated %}
+<div class="container bg-white col-md-4 border shadow-lg">
+    <h1 class="text-center">Add Category</h1>
+    <br><br>
+    <div class="form-group">
+    <form action="" method="post">
+        {% csrf_token %}
+    <!-- Django form in order how we use in admin area p can be changed to ul or table etc -->
+        {{ form.as_p }}
+        <button class="btn btn-success">Post Category</button>
+
+    </form>
+    </div>
+
+{% else %}
+    First Login then procedd...
+
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit blog Post{% endblock %}
+{% block content %}
+
+<a href="{% url 'home' %}" class="text-dark btn btn-white text-white  "
+style="text-decoration: none;
+color: black;">
+<svg xmlns="http://www.w3.org/2000/svg"  id="navLeft" width="16" height="16" fill="currentColor" 
+        class="navleft float-left mt-3 bi bi-arrow-left-circle navLeft bg-transparent" viewBox="0 0 16 16">
+        <a xlink:href="{% url 'home' %}" class="">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+</a>
+
+
+
+<div class="container-fluid col-sm-10  shadow rounded ">
+
+{% if user.is_authenticated %}
+
+    {% if user.id == post.author.id %}
+        <h1>Update Post</h1>
+        <br><br>
+        <!-- <div class="col-md-4"> -->
+        <div class="form-group">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <!-- Django form in order how we use in admin area p can be changed to ul or table etc,It is used to create or update the values in form(database) -->
+            {{form.media}}
+            {{ form.as_p }}
+
+            <button class="btn btn-primary mb-3">Post</button>
+
+        </form>
+        </div>
+<!-- </div> -->
+        {% else %}
+        Login first then only you can access
+        {% endif %}
+        
+{% else %}
+
+    Login first then only you can access
+    
+{% endif %}
+
+</div>
+
+{% endblock %}
+

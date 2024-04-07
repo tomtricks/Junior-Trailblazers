@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Blog Categories{% endblock %}
+
+<style>
+    body{
+        background: rgb(221, 224, 236);
+    }
+</style>
+
+{% block content %}
+
+<a href="{% url 'home' %}" class="text-dark btn btn-white"
+style="text-decoration: none;
+color: black;">
+<svg xmlns="http://www.w3.org/2000/svg"  id="navLeft" width="16" height="16" fill="currentColor" 
+        class="navleft float-left mt-3 bi bi-arrow-left-circle navLeft" viewBox="0 0 16 16">
+        <a xlink:href="{% url 'home' %}" class="">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+</a>
+<h1 class="text-center">Categories</h1>
+<style>
+
+    .con_col{
+        background-color: aliceblue;
+    }
+    .card_col{
+        background-color:rgb(205, 255, 255);
+    }
+    
+
+</style>
+<div class="container con_col    mt-2 py-3 ">
+    <div class="row align-items-center ">
+    <div class="box col-md-12 justify-content-between flex-wrap ">
+        <!-- <div class="card-columns "> -->
+
+{% for item in cat_menu_list %}
+
+<div class="card  card_col d-flex mb-3 shadow flex-row" style="text-transform: capitalize;">
+    <div class="card-body  pt-6 pb-6 text-center ">
+      <!-- Card content -->
+      <h4 class="text-decoration-none"> <a class="dropdown-item bg-transparent stretched-link" href="{% url 'category' item|slugify %}">{{ item }}</a> </h4>
+    </div>
+  </div>
+
+
+{% endfor %}
+</div></div></div>
+</div>
+
+{% endblock %}

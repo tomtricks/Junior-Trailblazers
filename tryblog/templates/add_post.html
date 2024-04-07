@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a new blog Post{% endblock %}
+{% block content %}
+<style>
+    body{
+        background: rgb(221, 224, 236);
+    }
+</style>
+
+{% if user.is_authenticated %}
+
+<!--left nav -->
+<!-- <a href="{% url 'home' %}" class="text-dark btn btn-white text-white  "
+style="text-decoration: none;
+color: black;">
+<svg xmlns="http://www.w3.org/2000/svg"  id="navLeft" width="16" height="16" fill="currentColor" 
+        class="navleft float-left mt-3 bi bi-arrow-left-circle navLeft bg-transparent" viewBox="0 0 16 16">
+        <a xlink:href="{% url 'home' %}" class="">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+</a> -->
+    
+<div class="container-fluid col-sm-10  bg-white shadow-lg rounded ">
+    <h1 class="px-2 py-2 text-center">Add Opportunity </h1>
+    <br>
+    <!-- <div class="col-md-4"> -->
+
+
+    <div class="form-group">
+    <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <style>
+            
+            #cke_id_body{
+                width:100% !important;
+                
+            }
+        </style>
+    <!-- Django form in order how we use in admin area p can be changed to ul or table etc -->  
+    {{ form.media}} <!-- This is used to show the Rich Text area with ckeditor -->
+        {{ form.as_p }}
+
+        <button class="btn btn-primary mb-3">Post Opportunity</button>
+
+        <button class="btn ml-2 btn-danger mb-3 "><a href="{% url 'home' %}" class="text-white"
+            style="text-decoration: none;">Discard Opportunity</button>
+        </a>
+
+
+
+    </form>
+    </div>
+    </div>
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("user").value = name;
+
+
+    </script>
+
+{% else %}
+    First Login then procedd...
+
+{% endif %}
+<!-- </div> -->
+{% endblock %}
