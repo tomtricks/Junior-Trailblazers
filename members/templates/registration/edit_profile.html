@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<style>
+    body{
+        background: rgb(0,0,0);
+background: linear-gradient(105deg, rgba(0,0,0,0.6054796918767507) 0%, rgba(99,131,255,1) 100%);
+    }
+</style>
+
+<!-- <a href="{% url 'home' %}" class="text-dark btn btn-white text-white  "
+style="text-decoration: none;">
+<svg xmlns="http://www.w3.org/2000/svg"  id="navLeft" width="16" height="16" fill="black" 
+        class="navleft float-left mt-3 bi bi-arrow-left-circle navLeft bg-transparent" viewBox="0 0 16 16">
+        <a xlink:href="{% url 'home' %}" class="">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+</a> -->
+
+
+<div class="container-fluid bg-white border mt-5 mb-3 col-sm-6 col-sm-6 shadow-lg rounded">
+<h1 class="text-center pt-2" >Edit Settings</h1>
+
+
+
+<br>
+
+
+<!-- <div class="col-md-4"> -->
+<div class="form-group">
+<form action="" method="post">
+    {% csrf_token %}
+<!-- Django form in order how we use in admin area p can be changed to ul or table etc -->
+    {{ form.as_p }}
+    <button class="btn btn-primary ">Update Profile</button>
+    
+    
+    <button class="btn ml-2 btn-danger "><a href="{% url 'home' %}" class="text-white"
+        style="text-decoration: none;">Back</button>
+    </a>
+
+    <script>
+      document.getElementById('id_password').style.display='none'  
+    </script>
+</form>
+</div>
+</div>
+
+<script>
+    document.getElementById('id_date_joined').disabled=true;
+   let id_date = document.getElementById('id_date_joined').value.substring(0,19);
+   document.getElementById('id_date_joined').value = id_date;
+</script>
+<!-- </div> -->
+{% endblock %}

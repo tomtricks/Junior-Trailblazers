@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a new  Profile Page{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+{#% if True  %#}
+
+
+<div class="container  col-md-6 shadow rounded">
+<h1 class="text-center">Create Profile Page</h1>
+    <br><br>
+    <!-- <div class="col-md-4"> -->
+    <div class="form-group">
+    <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+    <!-- Django form in order how we use in admin area p can be changed to ul or table etc -->
+    {{ form.media}}   
+    {{ form.as_p }}
+
+        <button class="btn btn-primary mb-3">Create Profile Page</button>
+
+    </form>
+    </div>
+    
+{% else %}
+<div class="col-md-6 shadow-lg rounded"> 
+First Login then procedd...
+</div> 
+{% endif %}
+
+
+</div>
+<!-- </div> -->
+{% endblock %}

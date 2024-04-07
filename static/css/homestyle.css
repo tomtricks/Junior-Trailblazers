@@ -1,0 +1,60 @@
+::-webkit-scrollbar{
+ 
+    width:2px;height:2px;
+    
+    background-color: rgb(233, 188, 188);
+  }
+  
+    .card {
+      min-height: 300px;
+      min-width: 300px;
+      margin-right: 5px;
+  }
+  .rowscroll{
+    background-color: rgb(253, 247, 247);
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    
+  
+    }
+  
+  
+    .scoll-pane {
+      width: 100%;
+      height: auto;
+      overflow: auto;
+      outline: none;
+      overflow-y: hidden;
+      padding-bottom: 15px;
+      -ms-overflow-style: scroll;  
+      /* // IE 10+ */
+      scrollbar-width: none;  
+      /* // Firefox */
+  }
+  
+  ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  img {
+      width: 300px;
+      height: 180px;
+  }
+  
+    .scoll-pane::-webkit-scrollbar { 
+    display: none;
+      /* // Safari and Chrome */
+    }
+  
+  a :hover{
+      text-decoration: none;
+      color: black;
+    }
+   
+  .nav-item img{
+    height: 20px;
+    width: 20px;;
+  }

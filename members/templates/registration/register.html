@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Register{% endblock %}
+{% block content %}
+
+<style>
+    body{
+        background: rgb(5,0,8);
+background: linear-gradient(105deg, rgba(5,0,8,0.6054796918767507) 0%, rgba(121,232,255,1) 100%);
+    }
+</style>
+
+<!-- Script with jquery for analysing the email with regex -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+
+<div class="container bg-white border my-5  col-md-5 shadow-lg rounded">
+
+
+<h1 class="text-center pt-2">Register</h1>
+<p class="text-center text-secondary pt-2">It's quick and easy </p>
+<!-- <br><br> -->
+<!-- <div class="col-md-4"> -->
+<div class="form-group">
+<form action="" method="post">
+    {% csrf_token %}
+<!-- Django form in order how we use in admin area p can be changed to ul or table etc -->
+{{ form.errors }}
+    {{ form.as_p }}
+    <p id="regexinfo"></p>
+    <button class="btn btn-primary"  id="submitbtn" disabled>Register</button>
+    <br>
+    <br>
+    <p class="font-weight-light"> Have already a account? <a href="{% url 'login' %}" 
+        class="text-decoration-none font-weight-bold text-dark" >Sign in</a></p>
+
+
+</form>
+
+</div>
+
+</div>
+<script>
+    $("#id_email").on("keyup change paste cut",function(){
+
+        regexvalidation()
+    
+    });
+    
+    function regexvalidation(){
+        // event.preventDefault();
+    let regex= new RegExp('[a-z0-9]+@gmail.com');
+    let mail=document.getElementById('id_email').value
+    // console.log(mail)
+    let testEmails =  [mail]
+    // console.log("He")
+    // testEmails.forEach((address)=>{
+    //     console.log(regex.test(address))
+    // });
+    
+    if (!regex.test(testEmails)){
+    document.getElementById('regexinfo').innerHTML=""
+    document.getElementById('submitbtn').disabled=false
+    // console.log("Its not an gmail address so valid")
+    }
+    else{
+        document.getElementById('regexinfo').innerHTML="Only working domain is allowed (gmail accounts are not allowed)"
+        document.getElementById('submitbtn').disabled=true;
+        // console.log("Its gmail so not valid")
+    }
+    
+    }
+    
+    
+    
+    
+    
+</script>
+
+<!-- </div> -->
+{% endblock %}
